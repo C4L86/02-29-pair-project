@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: project-db-name
+  database: spielbound-search
   host: localhost
 test:
   adapter: postgresql

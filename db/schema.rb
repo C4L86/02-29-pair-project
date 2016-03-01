@@ -15,4 +15,37 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "games", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.string   "genre"
+    t.integer  "age_group"
+    t.integer  "min_players"
+    t.integer  "max_players"
+    t.integer  "play_time"
+    t.string   "description"
+    t.string   "publisher"
+    t.float    "price"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "completed"
+    t.integer  "user_id"
+    t.integer  "station"
+    t.integer  "todo_user"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+  end
+
 end
