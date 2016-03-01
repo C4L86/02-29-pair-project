@@ -1,0 +1,19 @@
+<h1>Games Library</h1>
+
+<a href="/games_new">Add Games</a>
+
+<% @games.each do |game| %>
+  <p>
+  <ul>
+    <li>Title: <%= game.title %></li>
+    <li>Genre: <%= game.genre %></li>
+    <li>Age Group: <%= game.age_group %></li>
+    <li>Min Players: <%= game.min_players %></li>
+    <li>Max Players: <%= game.max_players %></li>
+    <li>Description: <%= game.description %></li>
+    <li>Play Time (min): <%= game.play_time %></li>
+    <li>Publisher: <%= game.publisher %></li>
+    <li>Price: $<%= game.price %></li>
+  </ul>
+  </p>
+<% end %>

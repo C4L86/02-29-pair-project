@@ -1,5 +1,9 @@
+<h1>Add Games:</h1>
+
+<a href="/index">Games Library</a>
+
 <p>
-  <form action="/process_add_games" method="post">
+  <form action="/process_add_games" id="games_new" method="post">
   <fieldset>
     <legend><strong>ADD:</strong></legend>
 
@@ -9,7 +13,15 @@
     <br />
     Genre:
     <br />
-    <input type="text" name="genre" required>
+    <select name="genre" required>
+      <option value="" disabled hidden selected>Choose a genre...</option>
+      <option value="Conquest">Conquest</option>
+      <option value="Word">Word</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Negotiation">Negotiation</option>
+      <option value="Memory">Memory</option>
+      <option value="Trivia">Trivia</option>
+    </select>
     <br />
     Age Group:
     <br />
@@ -22,7 +34,7 @@
     <br />
     Minimum Player Count:
     <br />
-    <select name="player_count" required>
+    <select name="min_players" required>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -33,7 +45,7 @@
     <br />
     Maximum Player Count:
     <br />
-    <select name="player_count">
+    <select name="max_players">
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
@@ -48,13 +60,11 @@
     <br />
     Description:
     <br />
-    <textarea rows="4" cols="50">
-      
-    </textarea>
+    <input type="text" name="description" required>
     <br />
     Run Time:
     <br />
-    <input type="text" name="run_time" required>
+    <input type="text" name="play_time" required>
     <br />
     Publisher:
     <br />
