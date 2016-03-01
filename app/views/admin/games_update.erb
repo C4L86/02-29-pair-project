@@ -1,15 +1,13 @@
-<h1>Add Games:</h1>
-
-<a href="/index">Games Library</a>
+<h1>Update <%= @game.title %></h1>
 
 <p>
-  <form action="/process_add_games" method="post">
+  <form action="/process_games_update/<%= @game.id %>" method="post">
   <fieldset>
-    <legend><strong>ADD:</strong></legend>
+    <legend><strong>UPDATE:</strong></legend>
 
     Title:
     <br />
-    <input type="text" name="title" required>
+    <input type="text" name="title" placeholder="<%= @game.title %>" required>
     <br />
     Genre:
     <br />
@@ -45,7 +43,7 @@
     <br />
     Maximum Player Count:
     <br />
-    <select name="max_players">
+    <select name="max_players" required>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
@@ -60,22 +58,23 @@
     <br />
     Description:
     <br />
-    <input type="text" name="description" required>
+    <input type="text" name="description" 
+    placeholder="<%= @game.description %>" required>
     <br />
     Run Time (mins.):
     <br />
-    <input type="text" name="play_time" required>
+    <input type="text" name="play_time" placeholder="<%= @game.play_time %>"required>
     <br />
     Publisher:
     <br />
-    <input type="text" name="publisher" required>
+    <input type="text" name="publisher" placeholder="<%= @game.publisher %>"required>
     <br />
     Price:
     <br />
-    <input type="text" name="price" required>
+    <input type="text" name="price" placeholder="<%= @game.price %>" required>
     <br />
     <p>
-    <input type="submit" value="Add Game">
+    <input type="submit" value="Update Game">
     </p>
   </fieldset>
   </form>
