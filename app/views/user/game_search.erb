@@ -1,0 +1,71 @@
+<h1>Game Search</h1>
+
+<p>
+  <form action="/process_game_search" method="post">
+  <fieldset>
+    <legend><strong>Search:</strong></legend>
+
+    Title:
+    <br />
+    <input type="text" name="title">
+    <br />
+    Genre:
+    <br />
+    <select name="genre">
+      <option disabled hidden selected>Choose a genre...</option>
+      <option value="Conquest">Conquest</option>
+      <option value="Word">Word</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Negotiation">Negotiation</option>
+      <option value="Memory">Memory</option>
+      <option value="Trivia">Trivia</option>
+    </select>
+    <br />
+    Age Group:
+    <br />
+    <select name="age_group">
+      <option disabled hidden selected>Choose an age group...</option>
+      <option value="8">8+</option>
+      <option value="10">10+</option>
+      <option value="12">12+</option>
+      <option value="14">14+</option>
+    </select>
+    <br />
+    Minimum Player Count:
+    <br />
+    <select name="min_players">
+      <option disabled hidden selected>Choose minimum players...</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <br />
+    Maximum Player Count:
+    <br />
+    <select name="max_players">
+      <option disabled hidden selected>Choose maximum players...</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="">Any</option>
+    </select>
+    <br />
+    Play Time (mins.):
+    <br />
+    <input type="text" name="play_time">
+    <br />
+    <p>
+    <input type="submit" value="Search Game">
+    </p>
+  </fieldset>
+  </form>
+</p>
