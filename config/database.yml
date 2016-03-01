@@ -4,5 +4,5 @@ development:
   host: localhost
 test:
   adapter: postgresql
-  database: project-db-name-test
+  database: spielbound-search-test
   host: localhost
