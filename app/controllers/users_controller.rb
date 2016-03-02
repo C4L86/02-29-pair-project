@@ -72,3 +72,11 @@ MyApp.post "/process_user_update_form" do
 
   redirect "/user_profile"
 end
+
+MyApp.get "/user_delete" do
+  @user = User.find_by_id(session["user_id"])
+
+  @user.delete
+
+  redirect "/"
+end
