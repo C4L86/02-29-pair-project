@@ -1,6 +1,15 @@
 <h1>Hello, <%= @user.name %></h1>
 
 <p>
+        <a href="/game_search">Search Games</a>
+        <br />
+    <% if @user.name == "admin" %>
+        <a href="/admin_home">Admin Home</a>
+    <% else %>
+    <% end %>
+</p>
+
+<p>
   User Name:
   <br />
   <%= @user.name %>
@@ -16,6 +25,7 @@
 </p>
 
 <p>
-  <a href="/user_update">update</a>
-  <a href="/user_delete">delete</a>
+  <a href="/user_update">Update</a>
+  <a href="/user_delete">Delete</a>
+  <a href="/logout_user/<%= @user.id %>">Log Out</a>
 </p>

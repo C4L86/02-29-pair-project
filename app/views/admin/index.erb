@@ -1,10 +1,14 @@
 <h1>Games Library</h1>
 
+    <a href="/game_search">Search Games</a>
+    <br />
   <% if @user.name == "admin" %>
+    <a href="/admin_home">Admin Home</a>
+    <br />
     <a href="/game_create">Add Games</a>
   <% else %>
   <% end %>
-  
+
 <% @games.each do |game| %>
   <p>
   <ul>
