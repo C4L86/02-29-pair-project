@@ -1,6 +1,6 @@
 MyApp.get "/" do
   @games = Game.all
-  @game
+
 
   erb :"/user/game_search"
 end
