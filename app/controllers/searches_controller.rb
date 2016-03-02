@@ -1,7 +1,6 @@
 MyApp.get "/game_search" do
   @games = Game.all
-  @game
-
+  @game  = Game.where(@search_hash)
   @users = User.all
   @user  = User.find_by_id(session["user_id"])
 

@@ -3,23 +3,22 @@ MyApp.get "/"  do
   erb :"/user/user_login"
 end
 
-MyApp.get "/new_user" do
+MyApp.get "/user_create" do
 
-
-  erb :"user/new_user"
+  erb :"user/user_create"
 end
 
-MyApp.post "/new_user_form" do
-
+MyApp.post "/user_create_form" do
   @user  = User.new
 
   @user.name     = params["name"]
   @user.email    = params["email"]
-  @user.password = params["password"]
   @user.dob      = params["dob"]
+  @user.password = params["password"]
 
   @user.save
   session["user_id"] = @user.id
+  
   redirect "/game_search"
 end
 

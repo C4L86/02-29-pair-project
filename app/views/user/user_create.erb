@@ -5,12 +5,17 @@
 </p>
 
 <p>
-  <form action="/new_user_form" method="post">
+  <form action="/user_create_form" method="post">
     Name:
     <br />
     <input type="text" name="name" required>
     <br />
 
+    Date of Birth:
+    <br />
+    <input type="date" name="dob" required>
+    <br />
+    
     Email:
     <br />
     <input type="text" name="email" required>
@@ -20,12 +25,7 @@
     <br />
     <input type="password" name="password" required>
     <br />
-    
-    Date of Birth:
-    <br />
-    <input type="text" name="dob" required>
-    <br />
-    
+
     <input type="submit" value="Sign Up">
   </form>
 </p>
