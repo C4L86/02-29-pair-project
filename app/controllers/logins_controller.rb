@@ -2,11 +2,20 @@ MyApp.post "/user_login_form" do
   @users = User.all
   @user  = User.find_by_email(params["email"])
 
-  if @user.password == params["password"]
+  if @user.name == "admin" && @user.password == params["password"]
     session["user_id"] = @user.id
-  end
+    redirect "/admin_home"
 
-  redirect "/game_search" 
+  elsif @user.password == params["password"]
+    session["user_id"] = @user.id
+    redirect "/game_search"
+  end 
+end
+
+MyApp.get "/admin_home" do
+  @user  = User.find_by_id(session["user_id"])
+
+  erb :"/admin/admin_home"
 end
 
 MyApp.get "/logout_user/:user_id" do
