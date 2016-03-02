@@ -1,6 +1,6 @@
 <h1>Games Library</h1>
 
-<a href="/games_new">Add Games</a>
+<a href="/game_create">Add Games</a>
 
 <% @games.each do |game| %>
   <p>
@@ -15,7 +15,7 @@
     <li>Publisher: <%= game.publisher %></li>
     <li>Price: $<%= game.price %></li>
   </ul>
-  <a href="/games_update/<%= game.id %>">update</a>
+  <a href="/game_update/<%= game.id %>">update</a>
   <a href="/games_delete/<%= game.id %>">delete</a>
   </p>
 <% end %>

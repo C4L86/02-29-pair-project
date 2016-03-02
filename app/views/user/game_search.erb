@@ -1,6 +1,10 @@
 <h1>Game Search</h1>
 
 <p>
+  <a href="/logout_user/<%= @user.id %>">Log Out</a>
+</p>
+
+<p>
   <form action="/process_game_search" method="post">
   <fieldset>
     <legend><strong>Search:</strong></legend>
@@ -70,9 +74,10 @@
   </form>
 </p>
 
-<h3>Game Search Result</h3>
+<!--Will need to figure out how to print search results here later-->
+<!-- <h3>Game Search Result</h3>
 
 <% @game.each do |game| %>
   <%= game.title %>
   <br />
-<% end %>
+<% end %> -->

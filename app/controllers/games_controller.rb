@@ -1,6 +1,6 @@
-MyApp.get "/games_new" do
+MyApp.get "/game_create" do
 
-  erb :"admin/games_new"
+  erb :"admin/game_create"
 end
 
 MyApp.post "/process_add_games" do
@@ -18,7 +18,7 @@ MyApp.post "/process_add_games" do
 
   @game.save
 
-  redirect "/games_new"
+  redirect "/game_create"
 end
 
 MyApp.get "/index" do
@@ -27,14 +27,14 @@ MyApp.get "/index" do
   erb :"/admin/index"
 end
 
-MyApp.get "/games_update/:game_id" do
+MyApp.get "/game_update/:game_id" do
   @games = Game.all
   @game  = Game.find_by_id(params[:game_id])
 
-  erb :"/admin/games_update"
+  erb :"/admin/game_update"
 end
 
-MyApp.post "/process_games_update/:game_id" do
+MyApp.post "/process_game_update/:game_id" do
   @games = Game.all
   @game =  Game.find_by_id(params[:game_id])
 
