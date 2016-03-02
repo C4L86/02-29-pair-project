@@ -5,6 +5,7 @@ end
 
 MyApp.post "/process_game_search" do
   @games = Game.all
+<<<<<<< HEAD
   
   search_hash = {}
   
@@ -17,5 +18,13 @@ MyApp.post "/process_game_search" do
   
   @game = Game.where(search_hash)
 
+=======
+
+  game_arr = params.values
+
+  
+  @game = Game.where({"title" => game_arr[0]})
+  binding.pry
+>>>>>>> master
   erb :"/user/game_search_result"
 end
