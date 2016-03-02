@@ -1,7 +1,10 @@
 <h1>Games Library</h1>
 
-<a href="/game_create">Add Games</a>
-
+  <% if @user.name == "admin" %>
+    <a href="/game_create">Add Games</a>
+  <% else %>
+  <% end %>
+  
 <% @games.each do |game| %>
   <p>
   <ul>
@@ -15,7 +18,11 @@
     <li>Publisher: <%= game.publisher %></li>
     <li>Price: $<%= game.price %></li>
   </ul>
-  <a href="/game_update/<%= game.id %>">update</a>
-  <a href="/games_delete/<%= game.id %>">delete</a>
+
+  <% if @user.name == "admin" %>
+    <a href="/game_update/<%= game.id %>">update</a>
+    <a href="/games_delete/<%= game.id %>">delete</a>
+  <% else %>
+  <% end %>
   </p>
 <% end %>

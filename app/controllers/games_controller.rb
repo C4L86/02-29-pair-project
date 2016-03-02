@@ -1,4 +1,5 @@
 MyApp.get "/game_create" do
+  @user  = User.find_by_id(session["user_id"])
 
   erb :"admin/game_create"
 end
@@ -23,6 +24,7 @@ end
 
 MyApp.get "/index" do
   @games = Game.all
+  @user  = User.find_by_id(session["user_id"])
 
   erb :"/admin/index"
 end
