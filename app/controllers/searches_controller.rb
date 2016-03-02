@@ -1,6 +1,5 @@
 MyApp.get "/" do
-  @games = Game.all
-  @game
+
 
   erb :"/user/game_search"
 end
@@ -19,5 +18,5 @@ MyApp.post "/process_game_search" do
 
   @game = Game.where(@search_hash)
 
-  redirect "/"
+  erb :"/user/game_search_result"
 end
