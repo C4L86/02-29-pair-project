@@ -7,15 +7,16 @@ end
 MyApp.post "/process_game_create" do
   @game = Game.new
 
-  @game.title       = params["title"]
-  @game.genre       = params["genre"]
-  @game.age_group   = params["age_group"].to_i
-  @game.min_players = params["min_players"].to_i
-  @game.max_players = params["max_players"].to_i
-  @game.description = params["description"]
-  @game.play_time   = params["play_time"].to_i
-  @game.publisher   = params["publisher"]
-  @game.price       = params["price"].to_f
+  @game.title        = params["title"]
+  @game.genre        = params["genre"]
+  @game.age_group    = params["age_group"].to_i
+  @game.min_players  = params["min_players"].to_i
+  @game.max_players  = params["max_players"].to_i
+  @game.description  = params["description"]
+  @game.min_playtime = params["min_playtime"].to_i
+  @game.max_playtime = params["max_playtime"].to_i
+  @game.publisher    = params["publisher"]
+  @game.price        = params["price"].to_f
 
   @game.save
 
@@ -52,7 +53,8 @@ MyApp.post "/process_game_update/:game_id" do
   @game.min_players = params["min_players"].to_i
   @game.max_players = params["max_players"].to_i
   @game.description = params["description"]
-  @game.play_time   = params["play_time"].to_i
+  @game.min_playtime = params["min_playtime"].to_i
+  @game.max_playtime = params["max_playtime"].to_i
   @game.publisher   = params["publisher"]
   @game.price       = params["price"].to_f
 
