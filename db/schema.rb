@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 0) do
     t.float    "price"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "learn_time"
+    t.boolean  "rating"
+    t.string   "comment"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
