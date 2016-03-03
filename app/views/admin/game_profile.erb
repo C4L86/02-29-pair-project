@@ -1,0 +1,17 @@
+<h1>"<%= @game.title %>" Profile</h1>
+
+<p>
+  <a href="/game_library">Game Library</a>
+</p>
+
+  <ul>
+  <li>Title: <%= @game.title %></li>
+  <li>Genre: <%= @game.genre %></li>
+  <li>Age Group: <%= @game.age_group %></li>
+  <li>Min Players: <%= @game.min_players %></li>
+  <li>Max Players: <%= @game.max_players %></li>
+  <li>Description: <%= @game.description %></li>
+  <li>Play Time (min): <%= @game.play_time %></li>
+  <li>Publisher: <%= @game.publisher %></li>
+  <li>Price: $<%= @game.price %></li>
+  </ul>

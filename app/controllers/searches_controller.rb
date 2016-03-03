@@ -11,6 +11,6 @@ MyApp.post "/process_game_search" do
   @games = Game.all
   
   @game = Game.smart_search(params)
-  binding.pry
+
   erb :"/user/game_search_result"
 end

@@ -5,6 +5,6 @@
 </p>
 
 <% @game.each do |game| %>
-  <%= game.title %>
+  <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
   <br />
 <% end %>

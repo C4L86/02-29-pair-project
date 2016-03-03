@@ -4,7 +4,7 @@ MyApp.get "/game_create" do
   erb :"admin/game_create"
 end
 
-MyApp.post "/process_add_games" do
+MyApp.post "/process_game_create" do
   @game = Game.new
 
   @game.title       = params["title"]
@@ -22,11 +22,17 @@ MyApp.post "/process_add_games" do
   redirect "/game_create"
 end
 
-MyApp.get "/index" do
+MyApp.get "/game_library" do
   @games = Game.all
   @user  = User.find_by_id(session["user_id"])
 
-  erb :"/admin/index"
+  erb :"/admin/game_library"
+end
+
+MyApp.get "/game_profile/:game_id" do
+  @game = Game.find_by_id(params[:game_id])
+
+  erb :"/admin/game_profile"
 end
 
 MyApp.get "/game_update/:game_id" do
@@ -52,7 +58,7 @@ MyApp.post "/process_game_update/:game_id" do
 
   @game.save
 
-  redirect "/index"
+  redirect "/game_library"
 end
 
 MyApp.get "/games_delete/:game_id" do
@@ -60,5 +66,5 @@ MyApp.get "/games_delete/:game_id" do
 
   @game.delete
 
-  redirect "/index"
+  redirect "/game_library"
 end

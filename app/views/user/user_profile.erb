@@ -1,24 +1,26 @@
 <h1>Hello, <%= @user.name %></h1>
 
 <p>
-        <a href="/game_search">Search Games</a>
-        <br />
-    <% if @user.name == "admin" %>
-        <a href="/admin_home">Admin Home</a>
-    <% else %>
-    <% end %>
+      <a href="/game_search">Search Games</a>
+      <br />
+      <a href="/game_library">Game Library</a>
+      <br />
+  <% if @user.name == "admin" %>
+      <a href="/admin_home">Admin Home</a>
+  <% else %>
+  <% end %>
 </p>
 
 <p>
-  User Name:
+  <i>User Name:</i>
   <br />
   <%= @user.name %>
   <br />
-  Email:
+  <i>Email:</i>
   <br />
   <%= @user.email %>
   <br />
-  Date of Birth:
+  <i>Date of Birth:</i>
   <br />
   <%= @user.dob %>
   <br />
