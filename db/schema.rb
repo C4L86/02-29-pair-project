@@ -23,12 +23,11 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "age_group"
     t.integer  "min_players"
     t.integer  "max_players"
-    t.integer  "play_time"
+    t.integer  "min_playtime"
+    t.integer  "max_playtime"
     t.string   "description"
     t.string   "publisher"
     t.float    "price"
-    t.integer  "min_playtime"
-    t.integer  "max_playtime"
     t.string   "image"
   end
 
