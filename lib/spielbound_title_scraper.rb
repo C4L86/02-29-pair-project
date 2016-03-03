@@ -29,10 +29,9 @@ class GameDataScraper
 # look into their code
 
 # identify the loop
+# identify where the title is in the loop
 # grab the title
 # push the title into @titles Array
-    
-
     @titles << title
   end
 end
