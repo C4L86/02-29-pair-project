@@ -39,15 +39,20 @@ end
 MyApp.post "/process_user_update_form" do
   @user = User.find_by_id(session["user_id"])
 
-  @user.name     = params["name"]
-  @user.email    = params["email"]
-  @user.dob      = params["dob"]
-  @user.password = params["password"]
+  if params["old_password"] != @user.password
+    
+    redirect "/user_update"
+  else
+    @user.name     = params["name"]
+    @user.email    = params["email"]
+    @user.dob      = params["dob"]
+    @user.password = params["new_password"]
 
-  @user.save
-  session["user_id"] = @user.id
+    @user.save
+    session["user_id"] = @user.id
 
-  redirect "/user_profile"
+    redirect "/user_profile"
+  end
 end
 
 MyApp.get "/user_delete" do

@@ -5,6 +5,8 @@
       <br />
       <a href="/game_library">Game Library</a>
       <br />
+      <a href="/logout_user/<%= @user.id %>">Log Out</a>
+      <br />
   <% if @user.name == "admin" %>
       <a href="/admin_home">Admin Home</a>
   <% else %>
@@ -29,5 +31,4 @@
 <p>
   <a href="/user_update">Update</a>
   <a href="/user_delete">Delete</a>
-  <a href="/logout_user/<%= @user.id %>">Log Out</a>
 </p>

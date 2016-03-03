@@ -8,22 +8,27 @@
   <form action="/process_user_update_form" method="post">
     Name:
     <br />
-    <input type="text" name="name" required>
+    <input type="text" name="name" placeholder="<%= @user.name %>" required>
     <br />
 
     Date of Birth:
     <br />
-    <input type="date" name="dob" required>
+    <input type="date" name="dob" value="<%= @user.dob %>" required>
     <br />
     
     Email:
     <br />
-    <input type="text" name="email" required>
+    <input type="text" name="email" placeholder="<%= @user.email %>" required>
     <br />
 
-    Password:
+    Old Password:
     <br />
-    <input type="password" name="password" required>
+    <input type="password" name="old_password" required>
+    <br />
+
+    New Password:
+    <br />
+    <input type="password" name="old_password" required>
     <br />
 
     <input type="submit" value="Update">
