@@ -10,25 +10,32 @@
 require "httparty"
 
 def fetch_game_info(title)
-
+  id = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{title}")
+  x  = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
 end
 
+fetch_game_info("Agricola")
 
+class GameDataScraper
+  def titles
+    return @titles
+  end
 
+  def fetch_titles
+    @titles = []
 
-# class GameDataScraper
-#   def titles
-#     return @titles
-#   end
+# Go to SB site
+    x = HTTParty.get("spielbound.com/library")
+# look into their code
 
-#   def fetch_titles
-#     @titles = []
+# identify the loop
+# grab the title
+# push the title into @titles Array
+    
 
-#     # ...
+    @titles << title
+  end
+end
 
-#     @titles << title
-#   end
-# end
-
-# scraper = SpielboundTitleScraper.new
-# scraper.fetch_titles
+scraper = SpielboundTitleScraper.new
+scraper.fetch_titles
