@@ -29,10 +29,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "publisher"
     t.float    "price"
     t.string   "image"
-<<<<<<< HEAD
     t.integer  "play_time"
-=======
->>>>>>> master
   end
 
   create_table "sessions", force: :cascade do |t|
