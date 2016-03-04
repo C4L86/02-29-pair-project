@@ -15,7 +15,12 @@ end
 
 task :default => :test
 
-# task :pre_populate_games do
-#   require "./main"
-#   populate_game_table
-# end
+task :pre_populate_games do
+  require "./main"
+  populate_game_table
+end
+
+task :fetch_titles do
+  require "./main"
+  fetch_titles_from_spielbound
+end

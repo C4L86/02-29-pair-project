@@ -1,17 +1,20 @@
-<h1>"<%= @game.title %>" Profile</h1>
+<center><h1>"<%= @game.title %>" Profile</h1></center>
 
 <p>
   <a href="/game_library">Game Library</a>
 </p>
-
+    <center>
+    <img src="<%= @game.image %>" title="<%= @game.title %>" height="300" width="300">
+    </center>
+    <br />
   <ul>
-  <li>Title: <%= @game.title %></li>
-  <li>Genre: <%= @game.genre %></li>
-  <li>Age Group: <%= @game.age_group %>+</li>
-  <li>Min Players: <%= @game.min_players %></li>
-  <li>Max Players: <%= @game.max_players %></li>
-  <li>Description: <%= @game.description %></li>
-  <li>Play Time: <%= @game.min_playtime %> to <%= max_playtime %> minutes</li>
-  <li>Publisher: <%= @game.publisher %></li>
-  <li>Price: $<%= @game.price %></li>
+  <li><strong>Title:</strong> <%= @game.title %></li>
+  <li><strong>Genre:</strong> <%= @game.genre %></li>
+  <li><strong>Age Group:</strong> <%= @game.age_group %>+</li>
+  <li><strong>Min Players:</strong> <%= @game.min_players %></li>
+  <li><strong>Max Players:</strong> <%= @game.max_players %></li>
+  <li><strong>Description:</strong> <%= @game.description %></li>
+  <li><strong>Play Time:</strong> <%= @game.min_playtime %> to <%= @game.max_playtime %> minutes</li>
+  <li><strong>Publisher:</strong> <%= @game.publisher %></li>
+  <li><strong>Price:</strong> $<%= @game.price %></li>
   </ul>

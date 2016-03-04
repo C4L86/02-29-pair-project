@@ -14,13 +14,14 @@
 <% @games.each do |game| %>
   <p>
   <ul>
-    <li><a href="/game_profile/<%= game.id %>"><%= game.title %></li>
-  </ul>
-
-  <% if @user.name == "admin" %>
-    <a href="/game_update/<%= game.id %>">update</a>
-    <a href="/games_delete/<%= game.id %>">delete</a>
+    <li>
+    <a href="/game_profile/<%= game.id %>"><%= game.title %>
+      <% if @user.name == "admin" %>
+    (<a href="/game_update/<%= game.id %>">update</a>
+    <a href="/games_delete/<%= game.id %>">delete</a>)
   <% else %>
   <% end %>
+    </li>
+  </ul>
   </p>
 <% end %>

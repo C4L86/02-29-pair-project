@@ -27,7 +27,7 @@
     <br />
     Age Group:
     <br />
-    <select name="age_group" required>
+    <select name="age_group" value="<%= @game.age_group %>" required>
       <option value="8">8+</option>
       <option value="10">10+</option>
       <option value="12">12+</option>
@@ -36,7 +36,7 @@
     <br />
     Minimum Player Count:
     <br />
-    <select name="min_players" required>
+    <select name="min_players" value="<%= @game.min_players %>" required>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -47,7 +47,7 @@
     <br />
     Maximum Player Count:
     <br />
-    <select name="max_players" required>
+    <select name="max_players" value="<%= @game.max_players %>" required>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
@@ -65,9 +65,13 @@
     <input type="text" name="description" 
     placeholder="<%= @game.description %>" required>
     <br />
-    Run Time (mins.):
+    Minimum Play Time (mins.):
     <br />
-    <input type="text" name="play_time" placeholder="<%= @game.play_time %>"required>
+    <input type="text" name="min_playtime" placeholder="<%= @game.min_playtime %>"required>
+    <br />
+    Maximum Play Time (mins.):
+    <br />
+    <input type="text" name="max_playtime" placeholder="<%= @game.max_playtime %>"required>
     <br />
     Publisher:
     <br />
