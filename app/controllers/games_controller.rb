@@ -6,8 +6,12 @@ MyApp.get "/game_create" do
 end
 
 MyApp.post "/process_game_create" do
+<<<<<<< HEAD
   @games = Game.all
   @game  = Game.new
+=======
+  @game = Game.new
+>>>>>>> master
 
   @game.title        = params["title"]
   @game.genre        = params["genre"]
@@ -49,6 +53,7 @@ MyApp.post "/process_game_update/:game_id" do
   @games = Game.all
   @game =  Game.find_by_id(params[:game_id])
 
+<<<<<<< HEAD
   @game.title        = params["title"]
   @game.genre        = params["genre"]
   @game.age_group    = params["age_group"].to_i
@@ -59,6 +64,18 @@ MyApp.post "/process_game_update/:game_id" do
   @game.max_playtime = params["max_playtime"].to_i
   @game.publisher    = params["publisher"]
   @game.price        = params["price"].to_f
+=======
+  @game.title       = params["title"]
+  @game.genre       = params["genre"]
+  @game.age_group   = params["age_group"].to_i
+  @game.min_players = params["min_players"].to_i
+  @game.max_players = params["max_players"].to_i
+  @game.description = params["description"]
+  @game.min_playtime = params["min_playtime"].to_i
+  @game.max_playtime = params["max_playtime"].to_i
+  @game.publisher   = params["publisher"]
+  @game.price       = params["price"].to_f
+>>>>>>> master
 
   @game.save
 
