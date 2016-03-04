@@ -16,17 +16,20 @@ ActiveRecord::Schema.define(version: 0) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "title"
     t.string   "genre"
     t.integer  "age_group"
     t.integer  "min_players"
     t.integer  "max_players"
-    t.integer  "play_time"
+    t.integer  "min_playtime"
+    t.integer  "max_playtime"
     t.string   "description"
     t.string   "publisher"
     t.float    "price"
+    t.string   "image"
+    t.integer  "play_time"
   end
 
   create_table "sessions", force: :cascade do |t|

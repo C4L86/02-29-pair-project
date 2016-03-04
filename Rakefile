@@ -14,3 +14,8 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task :default => :test
+
+# task :pre_populate_games do
+#   require "./main"
+#   populate_game_table
+# end

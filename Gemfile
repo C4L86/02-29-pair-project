@@ -30,3 +30,6 @@ gem "fog-aws"
 
 gem 'rubocop', '~> 0.37.2', require: false
 gem 'inch', require: false
+
+gem "httparty"
+gem "nokogiri"
