@@ -68,7 +68,7 @@ def fetch_titles_from_spielbound
 end
 
 def populate_game_table
-  x = ["7 Wonders: Duel",
+  game_title = ["7 Wonders: Duel",
     "7 Wonders: Leaders",
     "A Few Acres of Snow",
     "A Game of Thrones: The Board Game (Second Edition)",
@@ -1846,7 +1846,7 @@ def populate_game_table
     "Zooloretto"
   ]
 
-  x.each do |title|
+  game_title.each do |title|
     fetch_game_info(title)
   end
 end
