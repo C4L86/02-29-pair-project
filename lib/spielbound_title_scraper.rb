@@ -47,22 +47,35 @@ end
 # Not sure if it's being called correctly within that method
 # Still getting a reek warning about this and its partner method for being too # long
 #
+def target_writer
+  target.write("\"")
+  target.write(gamecard.css("h2.name a").text)
+  target.write("\",")
+  target.write("\n")
+end
+
+def name_grabber
+  doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
+
+  doc.css("div.gamecard").each do |gamecard|
+    target_writer
+  end
+end
+
 def page_iterator
   current_page = 1
 
-  89.times do  
-    doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
+  89.times do
 
-    doc.css("div.gamecard").each do |gamecard|
-      target.write("\"")
-      target.write(gamecard.css("h2.name a").text)
-      target.write("\",")
-      target.write("\n")
-    end
+    name_grabber
+    
     current_page += 1
   end
 end
 
+# Removed the 'return nil' statement as I don't think that it was really 
+# providing any use
+#
 def fetch_titles_from_spielbound
   target = open("titles.txt", 'w')
   target.write("[")
@@ -72,7 +85,7 @@ def fetch_titles_from_spielbound
   target.write("]")
   target.close
 
-  return nil
+  # return nil
 end
 
 def populate_game_table
