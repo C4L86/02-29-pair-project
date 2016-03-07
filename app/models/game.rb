@@ -48,6 +48,12 @@ class Game < ActiveRecord::Base
     end
   end
 
+  def game_object_finder
+    search_string = (title + age_group + min_players + max_players + max_playtime).chomp(" AND ")
+
+    Game.where(search_string)
+  end
+
   def self.smart_search(params)
 
     smart_search_title(params)
@@ -60,8 +66,6 @@ class Game < ActiveRecord::Base
 
     smart_search_play_time(params)
 
-    search_string = (title + age_group + min_players + max_players + max_playtime).chomp(" AND ")
-
-    Game.where(search_string)
+    game_object_finder
   end  
 end
