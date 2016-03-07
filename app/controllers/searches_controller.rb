@@ -12,6 +12,5 @@ MyApp.post "/process_game_search" do
   
   @game = Game.smart_search(params)
 
-
   erb :"/user/game_search_result"
 end
