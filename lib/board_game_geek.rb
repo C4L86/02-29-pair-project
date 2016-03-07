@@ -1,7 +1,3 @@
-require "open-uri"
-
-require_relative "../main.rb"
-
 def fetch_game_info(title)
   begin
     bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
@@ -39,30 +35,6 @@ def fetch_game_info(title)
   rescue URI::InvalidURIError
     puts "Bad URL tried. Skipping... Tried #{title}"
   end
-end
-
-def fetch_titles_from_spielbound
-  target = open("titles.txt", 'w')
-  target.write("[")
-
-  current_page = 1
-
-  89.times do  
-    doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
-
-    doc.css("div.gamecard").each do |gamecard|
-      target.write("\"")
-      target.write(gamecard.css("h2.name a").text)
-      target.write("\",")
-      target.write("\n")
-    end
-    current_page += 1
-  end
-
-  target.write("]")
-  target.close
-
-  return nil
 end
 
 def populate_game_table
