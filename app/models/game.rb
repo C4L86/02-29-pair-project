@@ -1,6 +1,5 @@
-#Game class refers to the games table in the spielbound_search database. self.smart_search queries the games table based on user inputs. 
+#Game class is responsible for the games table in the spielbound_search database.  self.smart_search queries the games table based on user inputs. 
 #
-#Inputs: The games table is populated as follows: 1 - the titles are raked from the html code on SpielBound's website using nokogiri and placed in a text file. 2 - The game profile information is from the free API of Board Game Geek, using HTTParty.
 #
 #Returns an ActiveRecord relation containing all matches with the search parameters. 
 
