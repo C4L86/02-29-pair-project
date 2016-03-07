@@ -1,3 +1,8 @@
+#Game class is responsible for the games table in the spielbound_search database.  self.smart_search queries the games table based on user inputs. 
+#
+#
+#Returns an ActiveRecord relation containing all matches with the search parameters. 
+
 class Game < ActiveRecord::Base
   def self.smart_search(params)
     if params["title"].blank?
