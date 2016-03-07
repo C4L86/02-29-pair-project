@@ -2,71 +2,101 @@ require "open-uri"
 
 require_relative "../main.rb"
 
+# Received TooManyStatements warning about this method
+# I feel like it wouldn't be helpful to separate these lines out into another 
+# method as they are all just setting data for a single game object
+def set_game_info
+  boardgame_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")["boardgames"]["boardgame"]
+  @game          = Game.new
+
+  @game.title        = title
+  @game.min_players  = boardgame_data["minplayers"]
+  @game.max_players  = boardgame_data["maxplayers"]
+  @game.min_playtime = boardgame_data["minplaytime"]
+  @game.max_playtime = boardgame_data["maxplaytime"]
+  @game.age_group    = boardgame_data["age"]
+  @game.description  = boardgame_data["description"]
+  @game.image        = boardgame_data["image"]
+  # @game.publisher  = boardgame_data["boardgamepublisher"][0]["__content__"]
+  # genre            =     
+  @game.save
+end
+
+def bgg_title_checker
+  bgg_boardgames_titles != nil && bgg_boardgames["boardgame"].is_a?(Hash)
+end
+
+def valid_game_checker
+  if bgg_title_checker
+    puts "Found one game for #{title}"
+    # game not on the site
+    # multiple titles
+    # missing column info
+    # 
+    set_game_info
+  else
+    puts "ERROR"
+    puts bgg_boardgames_titles
+  end
+end
+
 def fetch_game_info(title)
   begin
-    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
+    bgg_boardgames_titles = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")["boardgames"]
+    id                    = bgg_boardgames_titles["boardgame"]["objectid"]
 
-    if bgg_data_for_title["boardgames"] != nil && bgg_data_for_title["boardgames"]["boardgame"].is_a?(Hash)
-      puts "Found one game for #{title}"
-
-      id = bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
-
-      game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
-      # binding.pry
-      # game not on the site
-      # multiple titles
-      # missing column info
-      # 
-        @game = Game.new
-
-        @game.title        = title
-        @game.min_players  = game_data["boardgames"]["boardgame"]["minplayers"]
-        @game.max_players  = game_data["boardgames"]["boardgame"]["maxplayers"]
-        @game.min_playtime = game_data["boardgames"]["boardgame"]["minplaytime"]
-        @game.max_playtime = game_data["boardgames"]["boardgame"]["maxplaytime"]
-        @game.age_group    = game_data["boardgames"]["boardgame"]["age"]
-        @game.description  = game_data["boardgames"]["boardgame"]["description"]
-        @game.image        = game_data["boardgames"]["boardgame"]["image"]
-        # @game.publisher    = game_data["boardgames"]["boardgame"]["boardgamepublisher"][0]["__content__"]
-          # genre      = 
-            
-      @game.save
-    else
-      # binding.pry
-      puts "ERROR"
-      puts bgg_data_for_title["boardgames"]
-    end
+    valid_game_checker
+  
   rescue URI::InvalidURIError
     puts "Bad URL tried. Skipping... Tried #{title}"
   end
 end
 
+# Defined this method to shorten the method 'fetch_titles_from_spielbound'
+# Not sure if it's being called correctly within that method
+# Still getting a reek warning about this and its partner method for being too # long
+#
+def target_writer
+  target.write("\"")
+  target.write(gamecard.css("h2.name a").text)
+  target.write("\",")
+  target.write("\n")
+end
+
+def name_grabber
+  current_page = 1
+
+  doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
+
+  doc.css("div.gamecard").each do |gamecard|
+    target_writer
+  end
+  current_page += 1
+end
+
+def page_iterator
+  89.times do
+    name_grabber
+  end
+end
+
+# Removed the 'return nil' statement as I don't think that it was really 
+# providing any use
+#
 def fetch_titles_from_spielbound
   target = open("titles.txt", 'w')
   target.write("[")
 
-  current_page = 1
-
-  89.times do  
-    doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
-
-    doc.css("div.gamecard").each do |gamecard|
-      target.write("\"")
-      target.write(gamecard.css("h2.name a").text)
-      target.write("\",")
-      target.write("\n")
-    end
-    current_page += 1
-  end
+  page_iterator
 
   target.write("]")
   target.close
 
-  return nil
+  # return nil
 end
 
 def populate_game_table
-  x = ["7 Wonders: Duel",
+  game_title = ["7 Wonders: Duel",
     "7 Wonders: Leaders",
     "A Few Acres of Snow",
     "A Game of Thrones: The Board Game (Second Edition)",
@@ -1844,7 +1874,7 @@ def populate_game_table
     "Zooloretto"
   ]
 
-  x.each do |title|
+  game_title.each do |title|
     fetch_game_info(title)
   end
 end
