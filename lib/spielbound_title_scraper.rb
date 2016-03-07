@@ -43,10 +43,11 @@ def fetch_game_info(title)
   end
 end
 
-def fetch_titles_from_spielbound
-  target = open("titles.txt", 'w')
-  target.write("[")
-
+# Defined this method to shorten the method 'fetch_titles_from_spielbound'
+# Not sure if it's being called correctly within that method
+# Still getting a reek warning about this and its partner method for being too # long
+#
+def page_iterator
   current_page = 1
 
   89.times do  
@@ -60,6 +61,13 @@ def fetch_titles_from_spielbound
     end
     current_page += 1
   end
+end
+
+def fetch_titles_from_spielbound
+  target = open("titles.txt", 'w')
+  target.write("[")
+
+  page_iterator
 
   target.write("]")
   target.close
