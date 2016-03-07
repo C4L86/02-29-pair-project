@@ -2,6 +2,9 @@ require "open-uri"
 
 require_relative "../main.rb"
 
+# Received TooManyStatements warning about this method
+# I feel like it wouldn't be helpful to separate these lines out into another 
+# method as they are all just setting data for a single game object
 def set_game_info
   boardgame_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")["boardgames"]["boardgame"]
   @game          = Game.new
@@ -61,21 +64,19 @@ def target_writer
 end
 
 def name_grabber
+  current_page = 1
+
   doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
 
   doc.css("div.gamecard").each do |gamecard|
     target_writer
   end
+  current_page += 1
 end
 
 def page_iterator
-  current_page = 1
-
   89.times do
-
     name_grabber
-    
-    current_page += 1
   end
 end
 
