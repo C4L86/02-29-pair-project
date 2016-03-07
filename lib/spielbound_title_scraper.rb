@@ -5,14 +5,17 @@ require_relative "../main.rb"
 def fetch_game_info(title)
   begin
     bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
+    bgg_boardgames_titles = bgg_data_for_title["boardgames"]
 
-    if bgg_data_for_title["boardgames"] != nil && bgg_data_for_title["boardgames"]["boardgame"].is_a?(Hash)
+    if bgg_boardgames_titles != nil && bgg_boardgames["boardgame"].is_a?(Hash)
       puts "Found one game for #{title}"
 
-      id = bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
+      id = bgg_boardgames_titles["boardgame"]["objectid"]
 
       game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
-      # binding.pry
+
+      boardgame_data = game_data["boardgames"]["boardgame"]
+
       # game not on the site
       # multiple titles
       # missing column info
@@ -20,21 +23,20 @@ def fetch_game_info(title)
         @game = Game.new
 
         @game.title        = title
-        @game.min_players  = game_data["boardgames"]["boardgame"]["minplayers"]
-        @game.max_players  = game_data["boardgames"]["boardgame"]["maxplayers"]
-        @game.min_playtime = game_data["boardgames"]["boardgame"]["minplaytime"]
-        @game.max_playtime = game_data["boardgames"]["boardgame"]["maxplaytime"]
-        @game.age_group    = game_data["boardgames"]["boardgame"]["age"]
-        @game.description  = game_data["boardgames"]["boardgame"]["description"]
-        @game.image        = game_data["boardgames"]["boardgame"]["image"]
-        # @game.publisher    = game_data["boardgames"]["boardgame"]["boardgamepublisher"][0]["__content__"]
+        @game.min_players  = boardgame_data["minplayers"]
+        @game.max_players  = boardgame_data["maxplayers"]
+        @game.min_playtime = boardgame_data["minplaytime"]
+        @game.max_playtime = boardgame_data["maxplaytime"]
+        @game.age_group    = boardgame_data["age"]
+        @game.description  = boardgame_data["description"]
+        @game.image        = boardgame_data["image"]
+        # @game.publisher  = boardgame_data["boardgamepublisher"][0]["__content__"]
           # genre      = 
             
       @game.save
     else
-      # binding.pry
       puts "ERROR"
-      puts bgg_data_for_title["boardgames"]
+      puts bgg_boardgames_titles
     end
   rescue URI::InvalidURIError
     puts "Bad URL tried. Skipping... Tried #{title}"
