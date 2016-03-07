@@ -2,42 +2,48 @@ require "open-uri"
 
 require_relative "../main.rb"
 
+def set_game_info
+  boardgame_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")["boardgames"]["boardgame"]
+  @game          = Game.new
+
+  @game.title        = title
+  @game.min_players  = boardgame_data["minplayers"]
+  @game.max_players  = boardgame_data["maxplayers"]
+  @game.min_playtime = boardgame_data["minplaytime"]
+  @game.max_playtime = boardgame_data["maxplaytime"]
+  @game.age_group    = boardgame_data["age"]
+  @game.description  = boardgame_data["description"]
+  @game.image        = boardgame_data["image"]
+  # @game.publisher  = boardgame_data["boardgamepublisher"][0]["__content__"]
+  # genre            =     
+  @game.save
+end
+
+def bgg_title_checker
+  bgg_boardgames_titles != nil && bgg_boardgames["boardgame"].is_a?(Hash)
+end
+
+def valid_game_checker
+  if bgg_title_checker
+    puts "Found one game for #{title}"
+    # game not on the site
+    # multiple titles
+    # missing column info
+    # 
+    set_game_info
+  else
+    puts "ERROR"
+    puts bgg_boardgames_titles
+  end
+end
+
 def fetch_game_info(title)
   begin
-    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
-    bgg_boardgames_titles = bgg_data_for_title["boardgames"]
+    bgg_boardgames_titles = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")["boardgames"]
+    id                    = bgg_boardgames_titles["boardgame"]["objectid"]
 
-    if bgg_boardgames_titles != nil && bgg_boardgames["boardgame"].is_a?(Hash)
-      puts "Found one game for #{title}"
-
-      id = bgg_boardgames_titles["boardgame"]["objectid"]
-
-      game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
-
-      boardgame_data = game_data["boardgames"]["boardgame"]
-
-      # game not on the site
-      # multiple titles
-      # missing column info
-      # 
-        @game = Game.new
-
-        @game.title        = title
-        @game.min_players  = boardgame_data["minplayers"]
-        @game.max_players  = boardgame_data["maxplayers"]
-        @game.min_playtime = boardgame_data["minplaytime"]
-        @game.max_playtime = boardgame_data["maxplaytime"]
-        @game.age_group    = boardgame_data["age"]
-        @game.description  = boardgame_data["description"]
-        @game.image        = boardgame_data["image"]
-        # @game.publisher  = boardgame_data["boardgamepublisher"][0]["__content__"]
-          # genre      = 
-            
-      @game.save
-    else
-      puts "ERROR"
-      puts bgg_boardgames_titles
-    end
+    valid_game_checker
+  
   rescue URI::InvalidURIError
     puts "Bad URL tried. Skipping... Tried #{title}"
   end
