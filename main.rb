@@ -30,6 +30,10 @@ end
 require 'sinatra/activerecord'
 require './config/environments'
 
+# This method was called out by reek for not depending on instance state
+# It suggests possibly moving this method to another Class
+# Not sure if I should do anything, or even what I could do without messing something up
+#
 def database_exists?
   ActiveRecord::Base.connection rescue ActiveRecord::NoDatabaseError ? false : true
 end
