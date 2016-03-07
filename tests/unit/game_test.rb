@@ -1,5 +1,10 @@
 require 'test_helper'
 
+#GameTest is responsible for testing addition of a new game to the games table in the spielbound_search database.  self.smart_search queries the games table based on user inputs. 
+#
+#Inputs: Data in the games table has two sources. 1 - game titles are scraped from the Spielbound database using nokogiri. 2 - other records are captured based on the game title using the free API available from Board Game Geek.
+
+
 class GameTest < Minitest::Test
   def setup
     super
