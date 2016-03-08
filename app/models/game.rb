@@ -9,7 +9,7 @@ class Game < ActiveRecord::Base
     if title_params.blank?
       @title = ""
     else
-      @title = "title='#{title_params}' AND "
+      @title = "title = '#{title_params}' AND "
     end
   end
 
