@@ -20,7 +20,7 @@ class BoardGameGeek
   end
 
   def bgg_data_for_title
-    HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{@title}&exact=1")
+    @bgg_data_for_title ||= HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{@title}&exact=1")
   end
 
   def id
