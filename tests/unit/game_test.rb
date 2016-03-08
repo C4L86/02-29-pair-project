@@ -9,8 +9,6 @@ class GameTest < Minitest::Test
   def setup
     super
 
-
-
     @game             = Game.new
     @game.title       = "Test Title"
     @game.genre       = "Test Genre"
