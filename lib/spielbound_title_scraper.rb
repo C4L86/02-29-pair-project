@@ -3,12 +3,12 @@ require "open-uri"
 require_relative "../main.rb"
 
 class BoardGameGeek
-  def initialize(title)
+  def initialize
     @title = title
   end
 
-  def game_data_setter(title, id)
-    game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
+  def game_data_setter(id)
+    game_data ||= HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
 
     @game = Game.new
 
@@ -26,19 +26,19 @@ class BoardGameGeek
     @game.save
   end
 
-  def bgg_data_for_title(title)
-    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{@title}&exact=1")
+  def bgg_data_for_title
+    @bgg_data_for_title ||= HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{@title}&exact=1")
   end
 
-  def bgg_id(title)
+  def bgg_id
     bgg_data_for_title(@title)["boardgames"]["boardgame"]["objectid"]
   end
 
-  def game_found?(title)
+  def game_found?
     bgg_data_for_title(@title)["boardgames"] != nil && bgg_data_for_title(@title)["boardgames"]["boardgame"].is_a?(Hash)
   end
 
-  def fetch_game_info(title)
+  def fetch_game_info
     begin
       if game_found?(@title)
 
