@@ -6,6 +6,11 @@ class SpielboundTest < Minitest::Test
     super
   end
 
-  # def test_something
-  # end
+  def test_something
+    fetch_titles_from_spielbound(1)
+    titles_in_file = open("titles.txt", 'r').read
+
+    assert_includes(titles_in_file, "7 Wonders: Duel\n")
+    assert_includes(titles_in_file, "Acquire\n")
+  end
 end
