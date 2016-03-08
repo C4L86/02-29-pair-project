@@ -1,3 +1,4 @@
+# Service to connect with the BoardGameGeek API.
 class BoardGameGeek
   def initialize(title)
     @title = title
