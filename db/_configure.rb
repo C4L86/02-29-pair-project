@@ -5,8 +5,8 @@ ActiveRecord::Base.raise_in_transactional_callbacks = true
 class DB
   def self.define_table(table)
     if !ActiveRecord::Base.connection.table_exists?(table)
-      ActiveRecord::Base.connection.create_table(table) do |t|
-        t.timestamps null: false
+      ActiveRecord::Base.connection.create_table(table) do |table|
+        table.timestamps null: false
       end
     end
   end
