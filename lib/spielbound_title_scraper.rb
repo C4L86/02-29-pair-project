@@ -2,13 +2,9 @@ require "open-uri"
 
 require_relative "../main.rb"
 
-def game_data_setter(title)
+def game_data_setter(title, id)
   game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
-  # binding.pry
-  # game not on the site
-  # multiple titles
-  # missing column info
-  # 
+
   @game = Game.new
 
   @game.title        = title
@@ -20,7 +16,7 @@ def game_data_setter(title)
   @game.description  = game_data["boardgames"]["boardgame"]["description"]
   @game.image        = game_data["boardgames"]["boardgame"]["image"]
   # @game.publisher    = game_data["boardgames"]["boardgame"]["boardgamepublisher"][0]["__content__"]
-  # genre              = 
+  # @game.genre        = 
       
   @game.save
 end
@@ -34,9 +30,8 @@ def fetch_game_info(title)
 
       id = bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
 
-      game_data_setter(title)
+      game_data_setter(title, id)
     else
-      # binding.pry
       puts "ERROR"
       puts bgg_data_for_title["boardgames"]
     end
@@ -45,13 +40,13 @@ def fetch_game_info(title)
   end
 end
 
-def fetch_titles_from_spielbound
+def fetch_titles_from_spielbound(num_pages)
   target = open("titles.txt", 'w')
   target.write("[")
 
   current_page = 1
 
-  89.times do  
+  while current_page <= num_pages do 
     doc = Nokogiri::HTML(open("http://spielbound.com/library?title=&field_playing_time_min__value=&&p=All&min=All&max=All&rating=All&sort_by=title&sort_order=ASC&page=#{current_page}"))
 
     doc.css("div.gamecard").each do |gamecard|
