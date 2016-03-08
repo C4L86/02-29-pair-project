@@ -8,27 +8,20 @@ def fetch_game_info(title)
       id = bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
 
       game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
-      # binding.pry
-      # game not on the site
-      # multiple titles
-      # missing column info
-      # 
-        @game = Game.new
 
-        @game.title        = title
-        @game.min_players  = game_data["boardgames"]["boardgame"]["minplayers"]
-        @game.max_players  = game_data["boardgames"]["boardgame"]["maxplayers"]
-        @game.min_playtime = game_data["boardgames"]["boardgame"]["minplaytime"]
-        @game.max_playtime = game_data["boardgames"]["boardgame"]["maxplaytime"]
-        @game.age_group    = game_data["boardgames"]["boardgame"]["age"]
-        @game.description  = game_data["boardgames"]["boardgame"]["description"]
-        @game.image        = game_data["boardgames"]["boardgame"]["image"]
-        # @game.publisher    = game_data["boardgames"]["boardgame"]["boardgamepublisher"][0]["__content__"]
-          # genre      = 
-            
+      @game = Game.new
+
+      @game.title        = title
+      @game.min_players  = game_data["boardgames"]["boardgame"]["minplayers"]
+      @game.max_players  = game_data["boardgames"]["boardgame"]["maxplayers"]
+      @game.min_playtime = game_data["boardgames"]["boardgame"]["minplaytime"]
+      @game.max_playtime = game_data["boardgames"]["boardgame"]["maxplaytime"]
+      @game.age_group    = game_data["boardgames"]["boardgame"]["age"]
+      @game.description  = game_data["boardgames"]["boardgame"]["description"]
+      @game.image        = game_data["boardgames"]["boardgame"]["image"]
+
       @game.save
     else
-      # binding.pry
       puts "ERROR"
       puts bgg_data_for_title["boardgames"]
     end
@@ -42,20 +35,11 @@ def populate_game_table
     "Agricola",
     "Betrayal at House on the Hill",
     "Carcassonne",
-    "Citadels",
     "CO₂",
     "Eclipse",
-    "Hacienda",
     "Hanabi",
     "Stratego",
-    "Toc Toc Woodman",
-    "Tokaido",
-    "Trains and Stations",
-    "Trivial Pursuit",
-    "Unexploded Cow",
-    "Utopia",
-    "Word on the Street",
-    "Zombie Run!"
+    "Trivial Pursuit"
   ]
 
   x.each do |title|
