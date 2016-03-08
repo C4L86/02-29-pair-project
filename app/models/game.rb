@@ -3,69 +3,70 @@
 #
 #Returns an ActiveRecord relation containing all matches with the search parameters. 
 class Game < ActiveRecord::Base
-  def smart_search_title
-    params["title"] = title_params
+  def self.smart_search_title(params)
+    title_params = params
+    
     if title_params.blank?
-      title = ""
+      @title = ""
     else
-      title = "title='#{title_params}' AND "
+      @title = "title='#{title_params}' AND "
     end
   end
 
-  def smart_search_age_group
-    params["age_group"] = age_group_params
+  def self.smart_search_age_group(params)
+    age_group_params = params
     if age_group_params.blank?
-      age_group = ""
+      @age_group = ""
     else
-      age_group = "age_group >= #{age_group_params} AND "
+      @age_group = "age_group >= #{age_group_params} AND "
     end
   end
 
-  def smart_search_min_players
-    params["min_players"] = min_players_params
+  def self.smart_search_min_players(params)
+    min_players_params = params
     if min_players_params.blank?
-      min_players = ""
+      @min_players = ""
     else
-      min_players = "min_players >= #{min_players_params} AND "
+      @min_players = "min_players >= #{min_players_params} AND "
     end
   end
 
-  def smart_search_max_players
-    params["max_players"] = max_players_params
+  def self.smart_search_max_players(params)
+    max_players_params = params
     if max_players_params.blank?
-      max_players = ""
+      @max_players = ""
     else
-      max_players = "max_players <= #{max_players_params} AND "
+      @max_players = "max_players <= #{max_players_params} AND "
     end
   end
 
-  def smart_search_play_time
-    params["play_time"] = play_time_params
+  def self.smart_search_play_time(params)
+    play_time_params = params
     if play_time_params.blank?
-      max_playtime = ""
+      @max_playtime = ""
     else
-      max_playtime = "max_playtime <= #{play_time_params} AND "
+      @max_playtime = "max_playtime <= #{play_time_params} AND "
     end
   end
 
-  def game_object_finder
-    search_string = (title + age_group + min_players + max_players + max_playtime).chomp(" AND ")
+  def self.game_object_finder
+    search_string = (@title + @age_group + @min_players + @max_players + @max_playtime).chomp(" AND ")
 
     Game.where(search_string)
   end
 
   def self.smart_search(params)
+    
+    self.smart_search_title(params["title"])
+    
+    self.smart_search_age_group(params["age_group"])
 
-    smart_search_title(params)
+    self.smart_search_min_players(params["min_players"])
 
-    smart_search_age_group(params)
+    self.smart_search_max_players(params["max_players"])
 
-    smart_search_min_players(params)
+    self.smart_search_play_time(params["play_time"])
 
-    smart_search_max_players(params)
-
-    smart_search_play_time(params)
-
-    game_object_finder
+    self.game_object_finder
   end  
 end

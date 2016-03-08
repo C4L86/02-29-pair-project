@@ -2,9 +2,6 @@ require "open-uri"
 
 require_relative "../main.rb"
 
-# Received TooManyStatements warning about this method
-# I feel like it wouldn't be helpful to separate these lines out into another 
-# method as they are all just setting data for a single game object
 def set_game_info
   boardgame_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")["boardgames"]["boardgame"]
   @game          = Game.new
@@ -18,7 +15,7 @@ def set_game_info
   @game.description  = boardgame_data["description"]
   @game.image        = boardgame_data["image"]
   # @game.publisher  = boardgame_data["boardgamepublisher"][0]["__content__"]
-  # genre            =     
+  # genre            =    
   @game.save
 end
 
@@ -52,10 +49,6 @@ def fetch_game_info(title)
   end
 end
 
-# Defined this method to shorten the method 'fetch_titles_from_spielbound'
-# Not sure if it's being called correctly within that method
-# Still getting a reek warning about this and its partner method for being too # long
-#
 def target_writer
   target.write("\"")
   target.write(gamecard.css("h2.name a").text)
@@ -80,9 +73,6 @@ def page_iterator
   end
 end
 
-# Removed the 'return nil' statement as I don't think that it was really 
-# providing any use
-#
 def fetch_titles_from_spielbound
   target = open("titles.txt", 'w')
   target.write("[")
