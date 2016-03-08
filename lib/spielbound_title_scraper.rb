@@ -21,19 +21,28 @@ def game_data_setter(title, id)
   @game.save
 end
 
+def bgg_data_for_title(title)
+  bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
+end
+
+def bgg_id(title)
+  bgg_data_for_title(title)["boardgames"]["boardgame"]["objectid"]
+end
+
+def game_found?(title)
+  bgg_data_for_title(title)["boardgames"] != nil && bgg_data_for_title(title)["boardgames"]["boardgame"].is_a?(Hash)
+end
+
 def fetch_game_info(title)
   begin
-    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
-
-    if bgg_data_for_title["boardgames"] != nil && bgg_data_for_title["boardgames"]["boardgame"].is_a?(Hash)
+    if game_found?(title)
+      
       puts "Found one game for #{title}"
-
-      id = bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
 
       game_data_setter(title, id)
     else
       puts "ERROR"
-      puts bgg_data_for_title["boardgames"]
+      puts bgg_data_for_title(title)["boardgames"]
     end
   rescue URI::InvalidURIError
     puts "Bad URL tried. Skipping... Tried #{title}"
