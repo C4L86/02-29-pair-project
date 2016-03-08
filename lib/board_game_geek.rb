@@ -32,7 +32,7 @@ class BoardGameGeek
   end
 
   def game_data
-    HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
+    @game_data ||= HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
   end
 
   def fetch_game_info
