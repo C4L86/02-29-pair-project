@@ -1,4 +1,4 @@
-Game class is responsible for the games table in the spielbound_search database.
+#Game class is responsible for the games table in the spielbound_search database.
 #
 #
 #Returns an ActiveRecord relation containing all matches with the search parameters. 
