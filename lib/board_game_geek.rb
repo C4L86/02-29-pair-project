@@ -17,14 +17,16 @@ def bgg_data_for_title(title)
   HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
 end
 
+def id(title)
+  bgg_data_for_title(title)["boardgames"]["boardgame"]["objectid"]
+end
+
 def fetch_game_info(title)
   begin
     if bgg_data_for_title(title)["boardgames"] != nil && bgg_data_for_title(title)["boardgames"]["boardgame"].is_a?(Hash)
       puts "Found one game for #{title}"
 
-      id = bgg_data_for_title(title)["boardgames"]["boardgame"]["objectid"]
-
-      game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
+      game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id(title)}")
 
       create_game(title, game_data)
     else
