@@ -70,3 +70,14 @@ class Game < ActiveRecord::Base
     self.game_object_finder
   end  
 end
+
+
+
+
+
+
+
+
+
+
+
