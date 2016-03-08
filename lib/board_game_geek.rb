@@ -29,20 +29,3 @@ def fetch_game_info(title)
     puts "Bad URL tried. Skipping... Tried #{title}"
   end
 end
-
-def populate_game_table
-  x = [
-    "Agricola",
-    "Betrayal at House on the Hill",
-    "Carcassonne",
-    "CO₂",
-    "Eclipse",
-    "Hanabi",
-    "Stratego",
-    "Trivial Pursuit"
-  ]
-
-  x.each do |title|
-    fetch_game_info(title)
-  end
-end

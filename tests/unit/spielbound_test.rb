@@ -2,10 +2,6 @@ require 'test_helper'
 
 # Tests the Spielbound service.
 class SpielboundTest < Minitest::Test
-  def setup
-    super
-  end
-
   def test_single_page_of_results
     fetch_titles_from_spielbound(1)
     titles_in_file = open("titles.txt", 'r').read
