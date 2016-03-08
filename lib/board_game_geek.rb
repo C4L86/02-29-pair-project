@@ -21,9 +21,13 @@ def id(title)
   bgg_data_for_title(title)["boardgames"]["boardgame"]["objectid"]
 end
 
+def game_found?(title)
+  bgg_data_for_title(title)["boardgames"] != nil && bgg_data_for_title(title)["boardgames"]["boardgame"].is_a?(Hash)
+end
+
 def fetch_game_info(title)
   begin
-    if bgg_data_for_title(title)["boardgames"] != nil && bgg_data_for_title(title)["boardgames"]["boardgame"].is_a?(Hash)
+    if game_found?(title)
       puts "Found one game for #{title}"
 
       game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id(title)}")
