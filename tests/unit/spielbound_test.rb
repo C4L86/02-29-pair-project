@@ -21,26 +21,23 @@ class SpielboundTest < Minitest::Test
   end
 
   def test_finds_one_game
-   fetch_game_info("Agricola")
+    bgg = BoardGameGeek.new("Agricola")
+    bgg.fetch_game_info
 
-   refute_nil(Game.find_by_title("Agricola"))
+    refute_nil(Game.find_by_title("Agricola"))
   end
 
   def test_finds_one_game_when_many_would_have_matched
-   fetch_game_info("Carcassonne")
+    bgg = BoardGameGeek.new("Carcassonne")
+    bgg.fetch_game_info
 
-   refute_nil(Game.find_by_title("Carcassonne"))
+    refute_nil(Game.find_by_title("Carcassonne"))
   end
 
   def test_does_not_error_out_if_searches_for_unexpected_characters
+    bgg = BoardGameGeek.new("CO₂")
     expected_output = "Bad URL tried. Skipping... Tried CO₂\n"
 
-    assert_output(expected_output) { fetch_game_info("CO₂") }
-  end
-
-  def test_does_not_error_out_if_searches_for_unexpected_characters
-    expected_output = "Bad URL tried. Skipping... Tried CO₂\n"
-
-    assert_output(expected_output) { fetch_game_info("CO₂") }
+    assert_output(expected_output) { bgg.fetch_game_info }
   end
 end #end of class

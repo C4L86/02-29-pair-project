@@ -3,12 +3,16 @@ require "open-uri"
 require_relative "../main.rb"
 
 class BoardGameGeek
+  def initialize(title)
+    @title = title
+  end
+
   def game_data_setter(title, id)
     game_data = HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
 
     @game = Game.new
 
-    @game.title        = title
+    @game.title        = @title
     @game.min_players  = game_data["boardgames"]["boardgame"]["minplayers"]
     @game.max_players  = game_data["boardgames"]["boardgame"]["maxplayers"]
     @game.min_playtime = game_data["boardgames"]["boardgame"]["minplaytime"]
@@ -23,30 +27,30 @@ class BoardGameGeek
   end
 
   def bgg_data_for_title(title)
-    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{title}&exact=1")
+    bgg_data_for_title = HTTParty.get("http://boardgamegeek.com/xmlapi/search?search=#{@title}&exact=1")
   end
 
   def bgg_id(title)
-    bgg_data_for_title(title)["boardgames"]["boardgame"]["objectid"]
+    bgg_data_for_title(@title)["boardgames"]["boardgame"]["objectid"]
   end
 
   def game_found?(title)
-    bgg_data_for_title(title)["boardgames"] != nil && bgg_data_for_title(title)["boardgames"]["boardgame"].is_a?(Hash)
+    bgg_data_for_title(@title)["boardgames"] != nil && bgg_data_for_title(@title)["boardgames"]["boardgame"].is_a?(Hash)
   end
 
   def fetch_game_info(title)
     begin
-      if game_found?(title)
+      if game_found?(@title)
 
         puts "Found one game for #{title}"
 
-        game_data_setter(title, id)
+        game_data_setter(@title, id)
       else
         puts "ERROR"
-        puts bgg_data_for_title(title)["boardgames"]
+        puts bgg_data_for_title(@title)["boardgames"]
       end
     rescue URI::InvalidURIError
-      puts "Bad URL tried. Skipping... Tried #{title}"
+      puts "Bad URL tried. Skipping... Tried #{@title}"
     end
   end
 
