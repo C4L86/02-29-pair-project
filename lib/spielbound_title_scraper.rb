@@ -7,8 +7,8 @@ class BoardGameGeek
     @title = title
   end
 
-  def game_data_setter(id)
-    game_data ||= HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{id}")
+  def game_data_setter
+    game_data ||= HTTParty.get("http://www.boardgamegeek.com/xmlapi/boardgame/#{bgg_id}")
 
     @game = Game.new
 
@@ -31,23 +31,23 @@ class BoardGameGeek
   end
 
   def bgg_id
-    bgg_data_for_title(@title)["boardgames"]["boardgame"]["objectid"]
+    bgg_data_for_title["boardgames"]["boardgame"]["objectid"]
   end
 
   def game_found?
-    bgg_data_for_title(@title)["boardgames"] != nil && bgg_data_for_title(@title)["boardgames"]["boardgame"].is_a?(Hash)
+    bgg_data_for_title["boardgames"] != nil && bgg_data_for_title["boardgames"]["boardgame"].is_a?(Hash)
   end
 
   def fetch_game_info
     begin
-      if game_found?(@title)
+      if game_found?
 
         puts "Found one game for #{title}"
 
-        game_data_setter(@title, id)
+        game_data_setter
       else
         puts "ERROR"
-        puts bgg_data_for_title(@title)["boardgames"]
+        puts bgg_data_for_title["boardgames"]
       end
     rescue URI::InvalidURIError
       puts "Bad URL tried. Skipping... Tried #{@title}"
