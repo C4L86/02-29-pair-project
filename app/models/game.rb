@@ -3,6 +3,29 @@
 #
 #Returns an ActiveRecord relation containing all matches with the search parameters. 
 class Game < ActiveRecord::Base
+
+def create_and_update_game(params)
+
+    self.title        = params["title"]
+    self.genre        = params["genre"]
+    self.age_group    = params["age_group"].to_i
+    self.min_players  = params["min_players"].to_i
+    self.max_players  = params["max_players"].to_i
+    self.description  = params["description"]
+    self.min_playtime = params["min_playtime"].to_i
+    self.max_playtime = params["max_playtime"].to_i
+    self.publisher    = params["publisher"]
+    self.price        = params["price"].to_f
+
+    self.save
+  end #end of create and update game method
+
+
+
+
+
+
+
   def self.smart_search_title(params)
     title_params = params
     
@@ -70,21 +93,7 @@ class Game < ActiveRecord::Base
     self.game_object_finder
   end  
 
-  def create_and_update_game(params)
-
-    self.title        = params["title"]
-    self.genre        = params["genre"]
-    self.age_group    = params["age_group"].to_i
-    self.min_players  = params["min_players"].to_i
-    self.max_players  = params["max_players"].to_i
-    self.description  = params["description"]
-    self.min_playtime = params["min_playtime"].to_i
-    self.max_playtime = params["max_playtime"].to_i
-    self.publisher    = params["publisher"]
-    self.price        = params["price"].to_f
-
-    self.save
-  end #end of create and update game method
+  
 
 
 end #end of game class
