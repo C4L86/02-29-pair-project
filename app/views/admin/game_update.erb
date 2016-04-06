@@ -1,90 +1,94 @@
-<h1>Update <%= @game.title %></h1>
+<div class="container">
 
-<p>
-  <a href="/game_library">Back</a>
-</p>
+  <h1>Update <%= @game.title %></h1>
 
-<p>
-  <form action="/process_game_update/<%= @game.id %>" method="post">
-  <fieldset>
-    <legend><strong>UPDATE:</strong></legend>
+  <p>
+    <a href="/game_library">Back</a>
+  </p>
 
-    Title:
-    <br />
-    <input type="text" name="title" placeholder="<%= @game.title %>" required>
-    <br />
-    Genre:
-    <br />
-    <select name="genre" required>
-      <option disabled hidden selected>Choose a genre...</option>
-      <option value="Conquest">Conquest</option>
-      <option value="Word">Word</option>
-      <option value="Adventure">Adventure</option>
-      <option value="Negotiation">Negotiation</option>
-      <option value="Memory">Memory</option>
-      <option value="Trivia">Trivia</option>
-    </select>
-    <br />
-    Age Group:
-    <br />
-    <select name="age_group" value="<%= @game.age_group %>" required>
-      <option value="8">8+</option>
-      <option value="10">10+</option>
-      <option value="12">12+</option>
-      <option value="14">14+</option>
-    </select>
-    <br />
-    Minimum Player Count:
-    <br />
-    <select name="min_players" value="<%= @game.min_players %>" required>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-    <br />
-    Maximum Player Count:
-    <br />
-    <select name="max_players" value="<%= @game.max_players %>" required>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="">Any</option>
-    </select>
-    <br />
-    Description:
-    <br />
-    <input type="text" name="description" 
-    placeholder="<%= @game.description %>" required>
-    <br />
-    Minimum Play Time (mins.):
-    <br />
+  <p>
+    <form action="/process_game_update/<%= @game.id %>" method="post">
+    <fieldset>
+      <legend><strong>UPDATE:</strong></legend>
 
-    <input type="text" name="min_playtime" placeholder="<%= @game.min_playtime %>"required>
-    <br />
-    Maximum Play Time (mins.):
-    <br />
-    <input type="text" name="max_playtime" placeholder="<%= @game.max_playtime %>"required>
-    <br />
-    Publisher:
-    <br />
-    <input type="text" name="publisher" placeholder="<%= @game.publisher %>"required>
-    <br />
-    Price:
-    <br />
-    <input type="text" name="price" placeholder="<%= @game.price %>" required>
-    <br />
-    <p>
-    <input type="submit" value="Update Game">
-    </p>
-  </fieldset>
-  </form>
-</p>
+      Title:
+      <br />
+      <input type="text" name="title" placeholder="<%= @game.title %>" required>
+      <br />
+      Genre:
+      <br />
+      <select name="genre" required>
+        <option disabled hidden selected>Choose a genre...</option>
+        <option value="Conquest">Conquest</option>
+        <option value="Word">Word</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Negotiation">Negotiation</option>
+        <option value="Memory">Memory</option>
+        <option value="Trivia">Trivia</option>
+      </select>
+      <br />
+      Age Group:
+      <br />
+      <select name="age_group" value="<%= @game.age_group %>" required>
+        <option value="8">8+</option>
+        <option value="10">10+</option>
+        <option value="12">12+</option>
+        <option value="14">14+</option>
+      </select>
+      <br />
+      Minimum Player Count:
+      <br />
+      <select name="min_players" value="<%= @game.min_players %>" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <br />
+      Maximum Player Count:
+      <br />
+      <select name="max_players" value="<%= @game.max_players %>" required>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="">Any</option>
+      </select>
+      <br />
+      Description:
+      <br />
+      <input type="text" name="description" 
+      placeholder="<%= @game.description %>" required>
+      <br />
+      Minimum Play Time (mins.):
+      <br />
+
+      <input type="text" name="min_playtime" placeholder="<%= @game.min_playtime %>"required>
+      <br />
+      Maximum Play Time (mins.):
+      <br />
+      <input type="text" name="max_playtime" placeholder="<%= @game.max_playtime %>"required>
+      <br />
+      Publisher:
+      <br />
+      <input type="text" name="publisher" placeholder="<%= @game.publisher %>"required>
+      <br />
+      Price:
+      <br />
+      <input type="text" name="price" placeholder="<%= @game.price %>" required>
+      <br />
+      <p>
+      <input type="submit" value="Update Game">
+      </p>
+    </fieldset>
+    </form>
+  </p>
+
+</div>

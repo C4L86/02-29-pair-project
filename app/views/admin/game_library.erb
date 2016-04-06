@@ -1,27 +1,31 @@
-<h1>Game Library</h1>
+<div class="container">  
 
-  <% if @user.name == "admin" %>
-    <a href="/admin_home">Back</a>
-    <br />
-    <a href="/game_create">Add Games</a>
-    <br />
-  <% else %>
-    <a href="/user_profile">Your Profile</a>
-    <br />
-  <% end %>
-    <a href="/game_search">Search Games</a>
+  <h1>Game Library</h1>
 
-<% @games.each do |game| %>
-  <p>
-  <ul>
-    <li>
-    <a href="/game_profile/<%= game.id %>"><%= game.title %>
-      <% if @user.name == "admin" %>
-    (<a href="/game_update/<%= game.id %>">update</a>
-    <a href="/games_delete/<%= game.id %>">delete</a>)
-  <% else %>
+    <% if @user.name == "admin" %>
+      <a href="/admin_home">Back</a>
+      <br />
+      <a href="/game_create">Add Games</a>
+      <br />
+    <% else %>
+      <a href="/user_profile">Your Profile</a>
+      <br />
+    <% end %>
+      <a href="/game_search">Search Games</a>
+
+  <% @games.each do |game| %>
+    <p>
+    <ul>
+      <li>
+      <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
+        <% if @user.name == "admin" %>
+      (<a href="/game_update/<%= game.id %>">update</a>
+      <a href="/games_delete/<%= game.id %>">delete</a>)
+    <% else %>
+    <% end %>
+      </li>
+    </ul>
+    </p>
   <% end %>
-    </li>
-  </ul>
-  </p>
-<% end %>
+
+</div>

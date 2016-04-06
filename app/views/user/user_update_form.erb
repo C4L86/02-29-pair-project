@@ -1,36 +1,40 @@
-<h1>Update Your Profile, <%= @user.name %></h1>
+<div class="container">
 
-<p>
-    <a href="/user_profile">Back</a>
-</p>
+  <h1>Update Your Profile, <%= @user.name %></h1>
 
-<p>
-  <form action="/process_user_update_form" method="post">
-    Name:
-    <br />
-    <input type="text" name="name" placeholder="<%= @user.name %>" required>
-    <br />
+  <p>
+      <a href="/user_profile">Back</a>
+  </p>
 
-    Date of Birth:
-    <br />
-    <input type="date" name="dob" value="<%= @user.dob %>" required>
-    <br />
-    
-    Email:
-    <br />
-    <input type="text" name="email" placeholder="<%= @user.email %>" required>
-    <br />
+  <p>
+    <form action="/process_user_update_form" method="post">
+      Name:
+      <br />
+      <input type="text" name="name" placeholder="<%= @user.name %>" required>
+      <br />
 
-    Old Password:
-    <br />
-    <input type="password" name="old_password" required>
-    <br />
+      Date of Birth:
+      <br />
+      <input type="date" name="dob" value="<%= @user.dob %>" required>
+      <br />
+      
+      Email:
+      <br />
+      <input type="text" name="email" placeholder="<%= @user.email %>" required>
+      <br />
 
-    New Password:
-    <br />
-    <input type="password" name="old_password" required>
-    <br />
+      Old Password:
+      <br />
+      <input type="password" name="old_password" required>
+      <br />
 
-    <input type="submit" value="Update">
-  </form>
-</p>
+      New Password:
+      <br />
+      <input type="password" name="old_password" required>
+      <br />
+
+      <input type="submit" value="Update">
+    </form>
+  </p>
+
+</div>

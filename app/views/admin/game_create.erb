@@ -1,92 +1,96 @@
-<h1>Add Games:</h1>
+<div class="container">
 
-<a href="/admin_home">Back</a>
-<br />
-<a href="/game_library">Game Library</a>
-<br />
-<a href="/game_search">Search Games</a>
+  <h1>Add Games:</h1>
 
-<p>
-  <form action="/process_game_create" method="post">
-  <fieldset>
-    <legend><strong>ADD:</strong></legend>
+  <a href="/admin_home">Back</a>
+  <br />
+  <a href="/game_library">Game Library</a>
+  <br />
+  <a href="/game_search">Search Games</a>
 
-    Title:
-    <br />
-    <input type="text" name="title" required>
-    <br />
-    Genre:
-    <br />
-    <select name="genre" required>
-      <option disabled hidden selected>Choose a genre...</option>
-      <option value="Conquest">Conquest</option>
-      <option value="Word">Word</option>
-      <option value="Adventure">Adventure</option>
-      <option value="Negotiation">Negotiation</option>
-      <option value="Memory">Memory</option>
-      <option value="Trivia">Trivia</option>
-    </select>
-    <br />
-    Age Group:
-    <br />
-    <select name="age_group" required>
-      <option value="8">8+</option>
-      <option value="10">10+</option>
-      <option value="12">12+</option>
-      <option value="13">13+</option>
-      <option value="14">14+</option>
-      <option value="18">18+</option>
-    </select>
-    <br />
-    Minimum Player Count:
-    <br />
-    <select name="min_players" required>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-    <br />
-    Maximum Player Count:
-    <br />
-    <select name="max_players">
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="">Any</option>
-    </select>
-    <br />
-    Description:
-    <br />
-    <input type="text" name="description" required>
-    <br />
-    Minimum Play Time (mins.):
-    <br />
-    <input type="text" name="min_playtime" required>
-    <br />
-    Maximum Play Time (mins.):
-    <br />
-    <input type="text" name="max_playtime" required>
-    <br />
-    Publisher:
-    <br />
-    <input type="text" name="publisher" required>
-    <br />
-<!--     Price:
-    <br />
-    <input type="text" name="price" required>
-    <br /> -->
-    <p>
-    <input type="submit" value="Add Game">
-    </p>
-  </fieldset>
-  </form>
-</p>
+  <p>
+    <form action="/process_game_create" method="post">
+    <fieldset>
+      <legend><strong>ADD:</strong></legend>
+
+      Title:
+      <br />
+      <input type="text" name="title" required>
+      <br />
+      Genre:
+      <br />
+      <select name="genre" required>
+        <option disabled hidden selected>Choose a genre...</option>
+        <option value="Conquest">Conquest</option>
+        <option value="Word">Word</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Negotiation">Negotiation</option>
+        <option value="Memory">Memory</option>
+        <option value="Trivia">Trivia</option>
+      </select>
+      <br />
+      Age Group:
+      <br />
+      <select name="age_group" required>
+        <option value="8">8+</option>
+        <option value="10">10+</option>
+        <option value="12">12+</option>
+        <option value="13">13+</option>
+        <option value="14">14+</option>
+        <option value="18">18+</option>
+      </select>
+      <br />
+      Minimum Player Count:
+      <br />
+      <select name="min_players" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <br />
+      Maximum Player Count:
+      <br />
+      <select name="max_players">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="">Any</option>
+      </select>
+      <br />
+      Description:
+      <br />
+      <input type="text" name="description" required>
+      <br />
+      Minimum Play Time (mins.):
+      <br />
+      <input type="text" name="min_playtime" required>
+      <br />
+      Maximum Play Time (mins.):
+      <br />
+      <input type="text" name="max_playtime" required>
+      <br />
+      Publisher:
+      <br />
+      <input type="text" name="publisher" required>
+      <br />
+  <!--     Price:
+      <br />
+      <input type="text" name="price" required>
+      <br /> -->
+      <p>
+      <input type="submit" value="Add Game">
+      </p>
+    </fieldset>
+    </form>
+  </p>
+
+</div>

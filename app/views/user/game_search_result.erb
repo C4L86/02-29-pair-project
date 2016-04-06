@@ -1,10 +1,14 @@
-<h1>Search Results</h1>
+<div class="container">
 
-<p>
-  <a href="/game_search">Back</a>
-</p>
+  <h1>Search Results</h1>
 
-<% @game.each do |game| %>
-  <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
-  <br />
-<% end %>
+  <p>
+    <a href="/game_search">Back</a>
+  </p>
+
+  <% @game.each do |game| %>
+    <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
+    <br />
+  <% end %>
+
+</div>
