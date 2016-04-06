@@ -9,6 +9,7 @@
     <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a></li>
   </ul>
 
+  <br />
   <% @game.each do |game| %>
     <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
     <br />

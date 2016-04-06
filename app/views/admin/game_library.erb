@@ -2,29 +2,28 @@
 
   <h1>Game Library</h1>
 
-    <% if @user.name == "admin" %>
-      <a href="/admin_home">Back</a>
-      <br />
-      <a href="/game_create">Add Games</a>
-      <br />
-    <% else %>
-      <a href="/user_profile">Your Profile</a>
-      <br />
-    <% end %>
-      <a href="/game_search">Search Games</a>
+    <ul class="nav nav-tabs">
+      <% if @user.name == "admin" %>
+        <li role="presentation"><a href="/admin_home">Back</a>
+        <li role="presentation"><a href="/game_create">Add Games</a>
+      <% else %>
+        <li role="presentation"><a href="/user_profile">Your Profile</a>
+      <% end %>
+      <li role="presentation"><a href="/game_search">Search Games</a>
+      <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
+      </li>
+    </ul>
 
   <% @games.each do |game| %>
     <p>
-    <ul>
-      <li>
-      <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
-        <% if @user.name == "admin" %>
-      (<a href="/game_update/<%= game.id %>">update</a>
-      <a href="/games_delete/<%= game.id %>">delete</a>)
-    <% else %>
-    <% end %>
-      </li>
-    </ul>
+    <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
+      <% if @user.name == "admin" %>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+          <button type="button" class="btn btn-default"><a href="/game_update/<%= game.id %>">update</a></button>
+          <button type="button" class="btn btn-default"><a href="/games_delete/<%= game.id %>">delete</a></button>
+        </div>
+      <% else %>
+      <% end %>
     </p>
   <% end %>
 
