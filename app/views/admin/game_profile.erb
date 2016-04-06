@@ -1,9 +1,10 @@
 <div class="container">
 
-  <center><h1>"<%= @game.title %>" Profile</h1></center>
+  <h1><%= @game.title %></h1>
 
   <ul class="nav nav-tabs">
     <li role="presentation"><a href="/game_search">Search Games</a>
+    <li role="presentation" class="active"><a href="">Game Profile</a></li>
     <li role="presentation"><a href="/game_library">Game Library</a>
     <li role="presentation"><a href="/user_profile">Your Profile</a></li>
     <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
