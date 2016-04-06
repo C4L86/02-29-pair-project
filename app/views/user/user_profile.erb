@@ -2,18 +2,16 @@
 
   <h1>Hello, <%= @user.name %></h1>
 
-  <p>
-        <a href="/game_search">Search Games</a>
-        <br />
-        <a href="/game_library">Game Library</a>
-        <br />
-        <a href="/logout_user/<%= @user.id %>">Log Out</a>
-        <br />
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/game_search">Search Games</a></li>
+    <li role="presentation" class="active"><a href="/game_library">Game Library</a></li>
+    <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
+    </li>
     <% if @user.name == "admin" %>
         <a href="/admin_home">Admin Home</a>
     <% else %>
     <% end %>
-  </p>
+  </ul>
 
   <p>
     <strong>User Name:</strong>
@@ -30,9 +28,9 @@
     <br />
   </p>
 
-  <p>
-    <a href="/user_update">Update</a>
-    <a href="/user_delete">Delete</a>
-  </p>
+  <div class="btn-group btn-group-sm" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><a href="/user_update" >Update</a></button>
+    <button type="button" class="btn btn-default"><a href="/user_delete">Delete</a></button>
+  </div>
 
 </div>
