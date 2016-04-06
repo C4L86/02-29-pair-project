@@ -9,8 +9,8 @@ end
 
 MyApp.post "/process_game_search" do
   @games = Game.all
-  
-  @game = Game.smart_search(params)
+  @user  = User.find_by_id(session["user_id"])
+  @game  = Game.smart_search(params)
 
   erb :"/user/game_search_result"
 end

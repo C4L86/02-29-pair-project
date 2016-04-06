@@ -34,7 +34,8 @@ MyApp.get "/game_library" do
 end
 
 MyApp.get "/game_profile/:game_id" do
-  @game = Game.find_by_id(params[:game_id])
+  @game  = Game.find_by_id(params[:game_id])
+  @user  = User.find_by_id(session["user_id"])
 
   erb :"/admin/game_profile"
 end
