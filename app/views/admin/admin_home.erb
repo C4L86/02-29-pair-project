@@ -3,12 +3,11 @@
   <h1>Hello <%= @user.name %></h1>
 
   <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="">Admin Home</a>
     <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a></li>
   </ul>
 
-  <p>
-    
-  </p>
+  <br />
 
   <div class="btn-group-vertical" role="group" aria-label="...">
     <button type="button" class="btn btn-default"><a href="/game_create">Add Games</a></button>

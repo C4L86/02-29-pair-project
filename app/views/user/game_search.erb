@@ -3,23 +3,25 @@
   <h1>Game Search</h1>
 
   <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/game_library">Game Library</a></li>
+    <li role="presentation" class="active"><a href="">Game Search</a>
+    <li role="presentation"><a href="/game_library">Game Library</a></li>
     <li role="presentation"><a href="/user_profile">Your Profile</a></li>
     <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a></li>
   </ul>
+
+  <br />
+
   <p>
     <form action="/process_game_search" method="post">
     <fieldset>
-      <legend><strong>Search:</strong></legend>
-
       Title:
       <br />
       <input type="text" name="title">
       <br />
       Genre:
       <br />  
-      <select name="genre">
-        <option value="" hidden selected>...</option>
+      <select name="genre" class="custom-select">
+        <option disabled hidden selected>...</option>
         <option value="Conquest">Conquest</option>
         <option value="Word">Word</option>
         <option value="Adventure">Adventure</option>
@@ -30,8 +32,8 @@
       <br />
       Age Group:
       <br />
-      <select name="age_group">
-        <option value="" hidden selected>...</option>
+      <select name="age_group" class="custom-select">
+        <option disable hidden selected>...</option>
         <option value="8">8+</option>
         <option value="10">10+</option>
         <option value="12">12+</option>
@@ -42,8 +44,8 @@
       <br />
       Minimum Player Count:
       <br />
-      <select name="min_players">
-        <option value="" hidden selected>...</option>
+      <select name="min_players" class="custom-select">
+        <option disable hidden selected>...</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -54,8 +56,8 @@
       <br />
       Maximum Player Count:
       <br />
-      <select name="max_players">
-        <option value="" hidden selected>...</option>
+      <select name="max_players" class="custom-select">
+        <option disable hidden selected>...</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
@@ -68,9 +70,16 @@
         <option value="">Any</option>
       </select>
       <br />
-      Maximum Play Time (mins.):
-      <br />
-      <input type="text" name="max_playtime">
+      Maximum Play Time:
+      <div class="row">
+        <div class="col-xs-2">
+          <div class="input-group">
+            <input type="text" class="form-control" name="max_playtime" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">minutes</span>
+          </div>
+        </div>
+      </div>
+
       <br />
       <p>
       <br />

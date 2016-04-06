@@ -9,10 +9,13 @@
       <% else %>
         <li role="presentation"><a href="/user_profile">Your Profile</a>
       <% end %>
+      <li role="presentation" class="active"><a href="">Game Library</a>
       <li role="presentation"><a href="/game_search">Search Games</a>
       <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
       </li>
     </ul>
+
+  <br />
 
   <% @games.each do |game| %>
     <p>
