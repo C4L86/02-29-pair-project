@@ -6,17 +6,28 @@
 
   <p>
     <form action="/user_login_form" method="post">
-      Email:
+     <!--  Email:
       <br />
       <input type="text" name="email" required>
-      <br />
+      <br /> -->
 
-      Password:
-      <br />
+    <div class="input-group">
+      <input type="text" name="email" class="form-control" placeholder="Your email address" aria-describedby="basic-addon2" required>
+      <span class="input-group-addon" id="basic-addon2">example@example.com</span>
+    </div>
+
+<!--       Password: -->
+<!--       <br />
       <input type="password" name="password" required>
-      <br />
-      
-      <input type="submit" value="Log In">
+      <br /> -->
+    <br />
+    <div class="input-group">
+      <input type="password" name="password" class="form-control" placeholder="Your password" aria-describedby="basic-addon2" required>
+      <!-- <span class="input-group-addon" id="basic-addon2">example@example.com</span> -->
+    </div>
+
+    <br />
+      <button type="submit" class="btn btn-sm btn-default">Log In</button>
     </form>
   </p>
 

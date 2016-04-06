@@ -19,8 +19,22 @@
       <br />
       <input type="text" name="title">
       <br />
-      Genre:
+      
       <br />
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Genre
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" name="genre" aria-labelledby="dropdownMenu1">
+          <li value="Conquest">Conquest</li>
+          <li value="Word">Word</li>
+          <li value="Adventure">Adventure</li>
+          <li value="Negotiation">Negotiation</li>
+          <li value="Memory">Memory</li>
+          <li value="Trivia">Trivia</li>
+        </ul>
+      </div>     
       <select name="genre">
         <option value="" hidden selected>...</option>
         <option value="Conquest">Conquest</option>
