@@ -3,14 +3,14 @@
   <h1>Game Library</h1>
 
     <ul class="nav nav-tabs">
+      <li role="presentation"><a href="/game_search">Search Games</a>
+      <li role="presentation" class="active"><a href="">Game Library</a>
       <% if @user.name == "admin" %>
-        <li role="presentation"><a href="/admin_home">Back</a>
+        <li role="presentation"><a href="/admin_home">Admin Home</a>
         <li role="presentation"><a href="/game_create">Add Games</a>
       <% else %>
         <li role="presentation"><a href="/user_profile">Your Profile</a>
       <% end %>
-      <li role="presentation" class="active"><a href="">Game Library</a>
-      <li role="presentation"><a href="/game_search">Search Games</a>
       <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
       </li>
     </ul>
