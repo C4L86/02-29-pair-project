@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: spielbound-search
+  host: localhost
+test:
+  adapter: postgresql
+  database: spielbound-search-test
+  host: localhost

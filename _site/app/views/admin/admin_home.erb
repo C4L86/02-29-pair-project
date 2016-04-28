@@ -1,0 +1,18 @@
+<div class="container">  
+
+  <h1>Hello <%= @user.name %></h1>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="">Admin Home</a>
+    <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a></li>
+  </ul>
+
+  <br />
+
+  <div class="btn-group-vertical" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><a href="/game_create">Add Games</a></button>
+    <button type="button" class="btn btn-default"><a href="/game_library">Game Library</a></button>
+    <button type="button" class="btn btn-default"><a href="/game_search">Search Games</a></button>
+  </div>
+
+</div>

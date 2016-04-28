@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h1>Search Results</h1>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/game_search">Search Games</a></li>
+    <li role="presentation" class="active"><a href="">Search Results</a>
+    <li role="presentation"><a href="/game_library">Game Library</a></li>
+    <li role="presentation"><a href="/user_profile">Your Profile</a></li>
+    <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a></li>
+  </ul>
+
+  <br />
+  <% @game.each do |game| %>
+    <a href="/game_profile/<%= game.id %>"><%= game.title %></a>
+    <br />
+  <% end %>
+
+</div>

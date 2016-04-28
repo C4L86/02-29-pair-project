@@ -1,0 +1,51 @@
+<div class="container">
+
+  <h1>Update Your Profile, <%= @user.name %></h1>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation"><a href="/game_search">Search Games</a></li>
+    <li role="presentation"><a href="/game_library">Game Library</a></li>
+    <li role="presentation"><a href="/user_profile">Your Profile</a></li>
+    <li role="presentation"><a href="/logout_user/<%= @user.id %>">Log Out</a>
+    </li>
+    <% if @user.name == "admin" %>
+        <a href="/admin_home">Admin Home</a>
+    <% else %>
+    <% end %>
+  </ul>
+
+  <br />
+
+  <p>
+    <form action="/process_user_update_form" method="post">
+      Name:
+      <br />
+      <input type="text" name="name" placeholder="<%= @user.name %>" required>
+      <br />
+
+      Date of Birth:
+      <br />
+      <input type="date" name="dob" value="<%= @user.dob %>" required>
+      <br />
+      
+      Email:
+      <br />
+      <input type="text" name="email" placeholder="<%= @user.email %>" required>
+      <br />
+
+      Old Password:
+      <br />
+      <input type="password" name="old_password" required>
+      <br />
+
+      New Password:
+      <br />
+      <input type="password" name="old_password" required>
+      <br />
+
+      <br />
+      <button type="submit" class="btn btn-sm btn-default">Update</button>
+    </form>
+  </p>
+
+</div>
